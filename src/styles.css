@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
+
+  --color-ink: #1a1f2b;
+  --color-ink-soft: #3a4150;
+  --color-paper: #f3efe7;
+  --color-paper-2: #e7e1d6;
+  --color-card: #fbf8f3;
+  --color-line: #ddd4c6;
+  --color-muted: #6f685e;
+  --color-teal: #1a5f59;
+  --color-teal-deep: #0f3f3b;
+  --color-teal-soft: #e5f0ee;
+  --color-gold: #8d6b3a;
+  --color-gold-soft: #f3ead8;
+  --color-danger: #8d3c32;
+  --color-danger-soft: #f8ebe8;
+  --color-ok: #1f6b45;
+  --color-ok-soft: #e6f3ec;
+  --color-warn: #8a5a12;
+  --color-warn-soft: #f8f0df;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    text-wrap: pretty;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+    font-family: var(--font-serif);
+    font-weight: 400;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-teal);
+    outline-offset: 2px;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.stage-canvas {
+  height: min(72dvh, 52rem);
+  min-height: 22rem;
+  touch-action: none;
+}
+
+.field {
+  height: 2.75rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-line);
+  background: var(--color-paper);
+  padding-inline: 0.75rem;
+  color: var(--color-ink);
+}
+
+.step {
+  display: inline-flex;
+  height: 2.75rem;
+  width: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-line);
+  background: var(--color-paper);
+}
+
+.needle {
+  transform-origin: 50px 50px;
+  transition: transform 200ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .needle,
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
